@@ -24,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         String[] values = new String[] {"Wartość 1", "Wartość 2", "Wartość 3", "Wartość 4", "Wartość 5", "Wartość 6", "Wartość 7", "Wartość 8", "Wartość 9"};
@@ -37,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         ListView listview = (ListView) findViewById(R.id.listView1);
-        listview.setAdapter(this.adapter);
+        adapter.changeCursor(db.lista());
+        adapter.notifyDataSetChanged();
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
@@ -53,6 +55,22 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intencja, 2);
             }
         });
+
+        listview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+        {
+            @Override
+            public boolean
+            onItemLongClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                return true;
+            }
+        });
+
+        TextView name = (TextView) findViewById(android.R.id.text1);
+        Animal zwierz = db.pobierz(Integer.parseInt(name.getText().toString()));
+        db.usun(Integer.toString(zwierz.getId()));
+
+
     }
 
     @Override
@@ -80,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
             adapter.changeCursor(db.lista());
             adapter.notifyDataSetChanged();
         }
-        if(requestCode==1 && resultCode==RESULT_OK)
+        if(requestCode==2 && resultCode==RESULT_OK)
         {
             Bundle extras = data.getExtras();
             Animal nowy = (Animal)extras.getSerializable("nowy");
