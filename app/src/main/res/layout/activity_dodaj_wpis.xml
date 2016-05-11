@@ -10,20 +10,49 @@
     tools:context="com.example.dvil.lab04.DodajWpis">
 
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="46dp" />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="Zatwierdź"
         android:id="@+id/button"
-        android:layout_below="@+id/editText"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="42dp" />
+        android:layout_marginBottom="49dp" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gatunek"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/wielkosc"
+        android:hint="wielkość"
+        android:layout_below="@+id/gatunek"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/kolor"
+        android:hint="kolor"
+        android:layout_below="@+id/wielkosc"
+        android:layout_alignEnd="@+id/wielkosc"
+        android:layout_alignStart="@+id/wielkosc" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:hint="opis"
+        android:id="@+id/opis"
+        android:layout_below="@+id/kolor"
+        android:layout_centerHorizontal="true" />
+
+
 </RelativeLayout>
